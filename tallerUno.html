@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Number One</title>
+</head>
+
+<body style="background-color: antiquewhite;">
+
+    <button onclick="Uno()">Ejercicio uno</button> <br>
+    <button onclick="Dos()">Ejercicio dos</button><br>
+    <button onclick="Tres()">Ejercicio tres</button><br>
+    <button onclick="Cuatro()">Ejercicio cuatro</button><br>
+    <button onclick="Cinco()">Ejercicio cinco</button><br>
+    <button onclick="Seis()">Ejercicio seis</button><br>
+    <button onclick="Siete()">Ejercicio siete</button><br>
+    <script>
+
+        /* 1.Pepe desea saber cuál será su calificación final en la materia de Lógica de Programación y
+        Algoritmos. Dicha calificación se compone de los siguientes porcentajes:
+        - 55% promedio de tres parciales
+        - 30% Examen Final
+        - 15% Trabajo final */
+
+
+        function Uno() {
+            var parcialUno = Number(prompt(`Digite la calificación del primer parcial`));
+            var parcialDos = Number(prompt(`Digite la calificación del segundo parcial`));
+            var parcialTres = Number(prompt(`Digite la calificación del tercer parcial`));
+            var examenFinal = Number(prompt(`Digite la calificación del examen final`));
+            var trabajoFinal = Number(prompt(`Digite la calificación del trabajo final`));
+
+            let primeraOperacion = (parcialUno + parcialDos + parcialTres) / 3;
+            let promedioParcial = primeraOperacion * 0.55;
+
+            let promedioExamen = examenFinal * 0.30;
+
+            let promerdioTrabajo = trabajoFinal * 0.15;
+
+            notaFinal = promedioParcial + promedioExamen + promerdioTrabajo;
+
+            document.write(`Notas Parciales ${parcialUno}, ${parcialDos}, ${parcialTres} <br>`)
+            document.write(`Nota Examen final ${examenFinal} <br>`)
+            document.write(`Nota Trabajo Final ${trabajoFinal} <br>`)
+
+            document.write(`El promedio de las tres notas de parciales es : ${promedioParcial
+                } <br>`);
+            document.write(`La calificación final es de: ${notaFinal} <br>`);
+            if (notaFinal >= 3.5) {
+                document.write(`Pasó`)
+            } else { document.write(`No pasó`) }
+        }
+
+
+
+        /*2. Crear un algoritmo en el cual el usuario tenga que adivinar un número. Este número lo
+        creará el sistema al azar. El usuario tiene solo 10 intentos y el sistema debe mostrar si el
+        usuario está cerca o lejos de dar con el número programado por el sistema. */
+
+        function Dos() {
+
+            alert(`Adivina el número entre 1 y 50`)
+
+            var numeroRandom = parseInt(Math.random() * (50 - 0) + 0);
+            var numero = parseInt(prompt("debes adivinar el numero,  tendras 10 intentos "));
+            for (var i = 10; i > 1; i--) {
+                if (numeroRandom > numero) {
+                    var numero = parseInt(prompt("Numero entre el 0 y 50 \n el numero es mayor \n quedan " + (i - 1) + "intentos"));
+                } else if (numeroRandom < numero) {
+                    var numero = parseInt(prompt("Numero entre el 0 y 50 \n el numero es menor  \n numero de intentos que tienes: " + (i - 1)));
+                } else if (numeroRandom == numero) {
+                    alert(`Has ganado el numero es: ${numeroRandom}`)
+                };
+            }
+
+        }
+
+
+        /* 3. Crear un algoritmo que pida x cantidad de números e indique el porcentaje de números pares y el 
+        porcentaje de números impares. */
+
+        function Tres() {
+
+            let cantidadNumeros = Number(prompt("Ingrese la cantidad de numeros que quiera digitar"));
+            let par = 0;
+            let impar = 0;
+            for (let i = 0; i < cantidadNumeros; i++) {
+                numero = Number(prompt("Ingrese un valor"))
+                let condicion3 = (numero);
+                if (condicion3 == true) {
+                    i--
+                } else if (numero % 2 == 0) {
+                    par++
+                } else {
+                    impar++
+                }
+                total = par + impar;
+
+            }
+
+            par = par * 100 / total;
+            impar = impar * 100 / total;
+
+            document.write(`El porcentaje de numeros pares es ${par}% <br>`);
+            document.write(`El porcentaje de numeros impares es ${impar}% <br>`);
+        }
+
+        /* 4. Crear un algoritmo que imprima los números del 1 al 100 y del 101 al 200. El usuario debe poder escoger 
+        la opción a imprimir. */
+
+        function Cuatro() {
+            let opcion = Number(prompt(`Escoja la opción que desees \n 1 \n 2`));
+            switch (opcion) {
+                case 1:
+                    for (var i = 1; i <= 100; i++) {
+                        document.write(i + " ");
+                    }
+
+                    break;
+                case 2:
+                    for (var j = 101; j <= 200; j++) {
+                        document.write(j + " ")
+                    };
+                    break;
+
+                default:
+                    alert(`Digite un valor correcto`);
+                    break;
+            }
+        }
+
+        /* 5. Realiza un script que pida un texto e indique si es un palíndromo en un alert.Ejemplo de palíndromo: 
+        “amor a roma”. */
+
+        function Cinco() {
+            let frase = prompt(`Digite la frase a evaluar`)
+            let invertida = [""];
+
+            for (i = frase.length - 1; i >= 0; i--) {
+                invertida += frase[i];
+
+            } if (frase == invertida) {
+                document.write(frase + " : es un palindromo");
+            } else {
+                document.write(frase + " : no es un palindromo");
+            }
+        }
+        /* 6. Crear un algoritmo que almacene una lista de nombres en un arreglo y luego ordenarlos alfabéticamente.
+         No se sabe la cantidad de datos que se ingresarán. Se ingresa una lista de nombres (la lista termina cuando se
+        ingresa un espacio en blanco) si se repite un nombre, el sistema debe mostrar un mensaje indicando al usuario 
+        que no debe repetir nombres y continuar con la lista. */
+
+        function Seis() {
+            cont = 0;
+            var nombres = [""];
+
+            while (elementos != "") {
+
+                var elementos = prompt("Ingrese un nombre para guardar");
+                var buscar = 0;
+                for (i = 0; i < nombres.length; i++) {
+                    if (nombres[i] == elementos) {
+                        buscar = 1;
+                    }
+                }
+
+                if (buscar == 1) {
+                    nombres = nombres;
+                    nombres.sort();
+                } else {
+                    nombres[cont] = elementos;
+                    nombres.sort();
+                    cont++;
+                }
+            }
+            nombres.shift();
+            alert(nombres);
+        }
+
+        /*7. Crear un script que muestre una palabra o frase ingresada al revés y que indique cuántas letras y espacios 
+        tiene. ej: Ingrese una palabra o frase Hola mundo Tu palabra al revés es: odnum aloh Tiene 9 letras y 1 espacio*/
+
+        function Siete() {
+            alert(`Abrir consola`)
+            var palabra = prompt("Digite la palabra o frase a evaluar");
+            var inversion = "";
+            for (i =palabra.length - 1; i >= 0; i--) {
+                inversion += palabra[i];
+            }
+            document.write(`La palabra normal es: <br> ${palabra} <br>`);
+            document.write(`La palabra invertida es: <br> ${inversion}`);
+            var espaciosPalabra = 0;
+            for (i = 0; i < inversion.length;i++) {
+                if (inversion[i] == " ") {
+                    espaciosPalabra++;
+                }
+            }
+            console.log(`<br> tiene ${espaciosPalabra + 1} palabras`);
+            console.log(`<br> tiene ${espaciosPalabra} espacios`);
+        }
+    </script>
+</body>
+
+</html>
